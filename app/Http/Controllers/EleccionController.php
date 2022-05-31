@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Eleccion;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class EleccionController extends Controller
 {
@@ -119,5 +120,12 @@ class EleccionController extends Controller
     {
       Eleccion::whereId($id)->delete(); 
       return redirect('eleccion')->with("success", "Registro eliminado...");
+    }
+
+    public function generatepdf()
+    {
+        $elecciones = Eleccion::all();
+        $pdf = Pdf::loadView('eleccion/list', ['elecciones'=>$elecciones]);
+        return $pdf->download('archivo.pdf');
     }
 }

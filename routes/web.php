@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\CasillaController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\VotoController;
 use App\Http\Controllers\CandidatoController;
 use App\Http\Controllers\EleccionController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Generador de PDF
+Route::get('/casilla/pdf', [CasillaController::class,'generatepdf']);
+Route::get('/candidato/pdf', [CandidatoController::class,'generatepdf']);
+Route::get('/voto/pdf', [VotoController::class,'generatepdf']);
+Route::get('/eleccion/pdf', [EleccionController::class,'generatepdf']);
+
+//Login con Facebook
+Route::get('/login', [LoginController::class,'index']);
+Route::get('/login/facebook/', [LoginController::class,"redirectToFacebookProvider"]);
+Route::get('/login/facebook/callback', [LoginController::class,"handleProviderFacebookCallback"]);
+
+//Clases 
 Route::resource('casilla', CasillaController::class);
 Route::resource('candidato', CandidatoController::class);
 Route::resource('voto', VotoController::class);
 Route::resource('eleccion', EleccionController::class);
+
 
 

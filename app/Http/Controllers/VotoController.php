@@ -8,6 +8,7 @@ use App\Models\Casilla;
 use App\Models\Eleccion;
 use App\Models\Voto;
 use App\Models\Votocandidato;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
@@ -211,5 +212,11 @@ class VotoController extends Controller
             $success=false;
         }     
         return view ('message',compact('message','success'));
+    }
+    public function generatepdf()
+    {
+        $votos = Voto::all();
+        $pdf = Pdf::loadView('voto/list', ['votos'=>$votos]);
+        return $pdf->download('archivo.pdf');
     }
 }

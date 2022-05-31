@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Candidato;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CandidatoController extends Controller
 {
@@ -145,5 +146,12 @@ class CandidatoController extends Controller
     {
         Candidato::whereId($id)->delete();
         return redirect('candidato');
+    }
+
+    public function generatepdf()
+    {
+        $candidatos = Candidato::all();
+        $pdf = Pdf::loadView('candidato/list', ['candidatos'=>$candidatos]);
+        return $pdf->download('archivo.pdf');
     }
 }
