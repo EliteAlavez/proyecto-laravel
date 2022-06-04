@@ -12,14 +12,6 @@ margin-top: 40px;
   </div><br/>
 @endif
 
-<div class="container py-5">
-  <div class="row">
-      <div class="col-xl-12 text-right">
-          <!-- <a href="/casilla/pdf" class="btn btn btn-dark btn-sm">Export to PDF</a> -->
-          <a href="/eleccion/pdf" class="btn btn btn-dark btn-sm">Export to PDF</a>
-      </div>
-  </div>
-</div>
 
 <table class="table table-striped">
   <thead>

@@ -5,14 +5,6 @@
     margin-top: 40px;
     }
 </style>
-<div class="container py-5">
-    <div class="row">
-        <div class="col-xl-12 text-right">
-            <!-- <a href="/casilla/pdf" class="btn btn btn-dark btn-sm">Export to PDF</a> -->
-            <a href="/candidato/pdf" class="btn btn btn-dark btn-sm">Export to PDF</a>
-        </div>
-    </div>
-</div>
 
 <div class="uper">
     @if(session()->get('success'))
@@ -42,7 +34,7 @@
             <td><a href="pdf/{{$candidato->perfil}}">{{$candidato->nombrecompleto}}</td>
             <td><a href="{{ route('candidato.edit', $candidato->id)}}" 
             class="btn btn-primary" >
-            <i class="fa fa-edit" aria-hidden="true"></i></a> </td>
+            <i class="fa fa-edit" aria-hidden="true"></i>Editar</a> </td>
             <td>
 
             <form action="{{ route('candidato.destroy', $candidato->id)}}"
@@ -51,7 +43,7 @@
             @method('DELETE')
             <button class="btn btn-danger" type="submit"
             onclick="return confirm('Esta seguro de borrar {{$candidato->nombrecompleto}}')" >
-            <i class="fa fa-trash" aria-hidden="true"></i></button>
+            <i class="fa fa-trash" aria-hidden="true"></i>Eliminar</button>
             </form>
             </td>
         </tr>

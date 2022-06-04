@@ -35,8 +35,8 @@ class LoginController extends Controller
         try {
             //code...
             $auth_user = Socialite::driver('facebook')->user(); // Fetch authenticated user
-            // dd($auth_user);
-            return view('auth/welcome');
+             //dd($auth_user);
+             return redirect('candidato');
         } catch (Exception $e) {
             dd($e -> getMessage());
         }

@@ -6,6 +6,7 @@ use App\Http\Controllers\VotoController;
 use App\Http\Controllers\CandidatoController;
 use App\Http\Controllers\EleccionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GraphicsController;
 
 
 /*
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/graphics', [GraphicsController::class, 'index']);
 
 //Generador de PDF
 Route::get('/casilla/pdf', [CasillaController::class,'generatepdf']);
@@ -40,5 +42,5 @@ Route::resource('candidato', CandidatoController::class);
 Route::resource('voto', VotoController::class);
 Route::resource('eleccion', EleccionController::class);
 
-
+//Graphics
 
